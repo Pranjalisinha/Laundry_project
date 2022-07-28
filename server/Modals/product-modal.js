@@ -1,42 +1,30 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
-        shirt:{
-            quantity: Number,
-            wash_type: Array,
-            price: Number 
-        },
-        t_shirt:{
-            quantity: Number,
-            wash_type: Array,
-            price: Number
-        },
-        trouser:{
-            quantity: Number,
-            wash_type: Array,
-            price: Number
-        },
-        jeans:{
-            quantity: Number,
-            wash_type: Array,
-            price: Number
-        },
-        boxer:{
-            quantity: Number,
-            wash_type: Array,
-            price: Number
-        },
-        jogger:{
-            quantity: Number,
-            wash_type: Array,
-            price: Number
-        },
-        other:{
-            quantity: Number,
-            wash_type: Array,
-            price: Number
-        }
-    
+    userId: {
+        type: String,
+        required: true,
+    },
+    order_id:{
+        type: String,
+        required: true,
+    },
+    date_time:{
+        type: String,
+        required: true,
+    },
+    store_Info:{
+        type: String,
+        required: true,
+    },
+    status:{
+        type: String,
+        required: true,
+    },
+    items:{
+        type : String,
+        required: true,
+    }
 
 })
 
