@@ -1,0 +1,59 @@
+const express = require("express");
+const orderModal = require("../Modals/Order_modal")
+const jwt = require("jsonwebtoken");
+
+const router = express.Router();
+
+router.get("/", (req, res)=> {
+    try {
+        const user = jwt.verify(req.headers.authorization, process.env.SECRET_KEY );
+        res.status(200).send(user)
+    } catch(err) {
+        res.status(403).send("Unauthorize user", err)
+    }    
+});
+router.post("/add", (req, res)=> {
+    const today = new Date()
+    const option  = {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    }
+    const option1 = {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: false
+    }
+    const day = today.toLocaleDateString("en-Us", option);
+    const time = today.toLocaleTimeString("en-Us", option1);
+    const date = day + " " + time;
+   
+    orderModal.create({
+        userEmail: req.body.userEmail,
+         orderId: req.body.orderId, 
+         orderDate_time: date,
+         storeLocation: req.body.storeLocation,
+         storeAddress: req.body.storeAddress,
+         storePhoneNo: req.body.storePhoneNo,
+         orderDetail: req.body.orderDetail,
+         subTotal: req.body.subTotal,
+         packingCharges: req.body.packingCharges,
+         totalAmount: req.body.totalAmount
+        }).then((data)=> {
+        res.status(200).send(data);
+    }).catch((err)=> {
+        res.status(400).send(err)
+    })
+});
+
+router.delete("/cancel/:id",(req, res)=> {
+    orderModal.deleteOne({orderId: req.params.id}).then(()=> {
+        res.status(200).send("Order Cancelled Sucessfully")
+    }).catch((err)=> {
+        res.status(400).send(err) 
+    });
+});
+
+
+
+module.exports = router;
