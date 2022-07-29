@@ -4,25 +4,18 @@ const router = express.Router();
 
 router.post("/create-order",(req,res)=>{
     console.log(req.body);
-    //res.send("post working")
-    const timeStamp = new Date().toString();
-    console.log(timeStamp);
-    const storeInfo = JSON.stringify(store_Info)
-    console.log(storeInfo)
+   
 
     productModal.create({ 
         userId : req.body.userId,
         order_id :req.body.order_id,
-        date_time : timeStamp,
-        store_Info :req.body.store_Info,
-        // const storeInfo = JSON.stringify(store_Info)
-        // console.log(storeInfo),
+        date_time : req.body.date_time,
+        store_Info : JSON.stringify(req.body.store_Info),
+       
         status : req.body.status,
-        user_adress: req.body.user_adress,
-        items : req.body. items
-     },
-        //const storeInfo = JSON.stringify(store_Info),    
-    ).then((data)=>{
+        user_Address: req.body.user_Address,
+        items : JSON.stringify(req.body.items)
+     }).then((data)=>{
         res.status(200).send( data)
             
     }).catch((err)=>{
