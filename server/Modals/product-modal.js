@@ -17,6 +17,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    user_Address: {
+        type: String,
+        required: true
+    },
     status:{
         type: String,
         required: true,
