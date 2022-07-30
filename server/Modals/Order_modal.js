@@ -43,5 +43,5 @@ const orderSchema = new mongoose.Schema({
    }
 })
 
-const orderModal = mongoose.model("product", orderSchema);
+const orderModal = mongoose.model("order", orderSchema);
 module.exports = orderModal;

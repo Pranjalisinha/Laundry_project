@@ -4,12 +4,13 @@ const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 
-router.get("/create_order", (req, res)=> {
+router.get("/create-order", (req, res)=> {
+    console.log(req.headers);
     try {
         const user = jwt.verify(req.headers.authorization, process.env.SECRET_KEY );
         res.status(200).send(user)
     } catch(err) {
-        res.status(403).send("Unauthorize user", err)
+        res.status(400).send("Unauthorize user", err)
     }    
 });
 router.post("/add", (req, res)=> {
@@ -49,7 +50,7 @@ router.post("/add", (req, res)=> {
 });
 
 router.delete("/cancel/:id",(req, res)=> {
-    orderModal.deleteOne({id: req.params.id}).then(()=> {
+    orderModal.deleteOne({_id: req.params.id}).then(()=> {
         res.status(200).send("Order Cancelled Sucessfully")
     }).catch((err)=> {
         console.log(err);
