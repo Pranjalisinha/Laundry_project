@@ -1,6 +1,7 @@
 .Head{
     display: flex;
-    border: 1px inset rgb(214, 212, 212);
+    border-left: 2px solid rgb(231, 229, 229);
+    border-top: 2px solid rgb(231, 229, 229);
     top: 0px;
     left: 0px;
     width: 1340px;
@@ -10,6 +11,7 @@
     opacity: 1;
 }
 .head_title{
+    padding-left: 35px;
     top: 27px;
     left: 45px;
     width: 108px;
@@ -27,12 +29,14 @@
 }
 
 .pricing{
-    margin-top: 15px;
-    margin-left: 800px;
-    top: 34px;
+    margin-top: -15px;
+    margin-left: 720px;
+    padding: 30px 25px ;
+    border-left: 1px solid rgb(218, 215, 215);
+    /* top: 34px; */
     left: 1035px;
     width: 48px;
-    height: 19px;
+    height: 20px;
     text-align: center;
     font: normal normal normal 14px/19px ;
     font-family: Arial, Helvetica, sans-serif;
@@ -42,7 +46,7 @@
     opacity: 1;
 }
 .career{
-    border: 0.5px inset rgb(211, 210, 210);
+    border-left: 1px solid rgb(218, 215, 215);
     text-align: center;
     padding-top: 30px;
     margin-top: -16px;

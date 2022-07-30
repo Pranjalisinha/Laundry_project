@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 
-router.get("/", (req, res)=> {
+router.get("/create_order", (req, res)=> {
     try {
         const user = jwt.verify(req.headers.authorization, process.env.SECRET_KEY );
         res.status(200).send(user)
@@ -13,6 +13,7 @@ router.get("/", (req, res)=> {
     }    
 });
 router.post("/add", (req, res)=> {
+   
     const today = new Date()
     const option  = {
         day: "numeric",
@@ -40,6 +41,7 @@ router.post("/add", (req, res)=> {
          packingCharges: req.body.packingCharges,
          totalAmount: req.body.totalAmount
         }).then((data)=> {
+            console.log(data);
         res.status(200).send(data);
     }).catch((err)=> {
         res.status(400).send(err)
@@ -47,9 +49,10 @@ router.post("/add", (req, res)=> {
 });
 
 router.delete("/cancel/:id",(req, res)=> {
-    orderModal.deleteOne({orderId: req.params.id}).then(()=> {
+    orderModal.deleteOne({id: req.params.id}).then(()=> {
         res.status(200).send("Order Cancelled Sucessfully")
     }).catch((err)=> {
+        console.log(err);
         res.status(400).send(err) 
     });
 });
