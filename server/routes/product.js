@@ -3,17 +3,16 @@ const productModal = require("../Modals/product-modal");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-router.get("/", (req, res)=> {
+
+
+router.post("/create-order",(req,res)=>{
+    console.log(req.body);
     try {
         const user = jwt.verify(req.headers.authorization, process.env.SECRET_KEY );
         res.status(200).send(user)
     } catch(err) {
         res.status(403).send("Unauthorize user", err)
     }    
-});
-
-router.post("/create-order",(req,res)=>{
-    console.log(req.body);
     productModal.create({ 
         userId : req.body.userId,
         order_id :req.body.order_id,

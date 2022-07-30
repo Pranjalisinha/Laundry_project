@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-
+require("dotenv").config();
 const productController = require("./routes/product");
 //console.log(productController)
 app.use(express.json());
@@ -15,7 +15,9 @@ app.listen(3001,(err)=>{
         console.log(err)
     }
 });
-mongoose.connect("mongodb://localhost:27017/laundry",(data)=>{
+
+const laundryDB= "mongodb+srv://Sakshi09:test123@instaclone.gwk4cly.mongodb.net/laundry?retryWrites=true&w=majority"
+mongoose.connect(laundryDB,(data)=>{
     console.log("Successfully connect to db")
 },(err)=>{
     console.log(err)
