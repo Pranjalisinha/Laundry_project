@@ -10,13 +10,13 @@ router.post("/Register",async(req,res)=>{
 
     const Email= await Users.find({Email:req.body.Email})
     if(Email.length){
-        res.status(400).send("email exist")
+        res.status(400).send("EmailExist")
      }
     else{
     //checking PhoneNumber is unique or not 
         const Phone=await Users.find({Phone:req.body.Phone})
         if(Phone.length){
-            res.status(400).send("Phone number exist")
+            res.status(400).send("PhoneExist")
          }
         else{
     // generating salt        
@@ -40,7 +40,6 @@ router.post("/Register",async(req,res)=>{
                     }
                      else {
                        res.status(400).send("hasherr")
-                       console.log(hasherr)
                      }
                   })
                 }else
@@ -68,9 +67,8 @@ router.post("/Register",async(req,res)=>{
            const data= await bcrypt.compare(req.body.Password,signindata[0].Password)
              if(data){
               //generating token
-                 const token=jwt.sign(signindata[0].Email,process.env.SECRET_KEY)
-                 console.log(token)
-                 res.status(200).send("successfully logged in")
+                 const Authtoken=jwt.sign(signindata[0].Email,process.env.SECRET_KEY)
+                 res.status(200).send({Authtoken})
               }
               else{
                  res.status(400).send("Invalid password")

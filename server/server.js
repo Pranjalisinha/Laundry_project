@@ -15,8 +15,10 @@ app.listen(process.env.PORT || 3001, (err)=>{
     console.log("Server connected succesfully")
    ;
 })
+//"mongodb+srv://Sakshi09:test123@instaclone.gwk4cly.mongodb.net/instaclone?retryWrites=true&w=majority"
+//"mongodb://localhost/Laundry"
 
-mongoose.connect("mongodb://localhost/Laundry",(err)=>{
+mongoose.connect("mongodb+srv://Sakshi09:test123@instaclone.gwk4cly.mongodb.net/laundry?retryWrites=true&w=majority",(err)=>{
     if(err){
         console.log("err")
     }else{
