@@ -1,26 +1,27 @@
 import {Route,Routes,BrowserRouter} from "react-router-dom"
 import Footer from "./order-components/footer";
 import Header from "./order-components/header";
-import OrderBody from "./order-components/order-body";
+import OrderBody from "./order-components/order-create";
 import SideBar from "./order-components/sidebar";
 
 function App() {
   return (
-    <>
-    <Header/>
-    <OrderBody/>
-    <SideBar/>
-    <Footer/>
-    </>
     
-    // <BrowserRouter>
-    // <Routes>
-    //   <SideBar/>
-    //   <Footer/>
-    //   <Route path="/" element={<Footer/>}></Route>
-    //   <Route path="/" element={<SideBar/>}></Route>
-    // </Routes>
-    // </BrowserRouter>
+    
+    
+    <BrowserRouter>
+    <Header/>
+    <SideBar/>
+    <Routes>
+      
+      <Route path="/create-order" element={<OrderBody/>}></Route>
+      {/* <Route path="/" element={<SideBar/>}></Route> */}
+    </Routes>
+    <Footer/>
+    </BrowserRouter>
+    
+    
+    
   );
 }
 

@@ -1,15 +1,17 @@
+import React from "react";
 import "./header.css"
 const Header = ()=>{
     return(
         <>
         <header id="header">
-            <h2>LAUNDRY</h2>
+            <div className="heading"><h2>LAUNDRY</h2></div>
+            
             {/* <ul type="none" id="list">
                 <li className="price"> Pricing</li>
                 <li className="career" >Career</li>
                 <li className="userImg" ><img src="avtar.png" alt="userLogo"/></li>
             </ul> */}
-            {/* <div id="rigth-head"> */}
+            <div id="rigth-head">
             <div className="list1">
             <p className="pricing">Pricing</p>
             </div>
@@ -22,7 +24,7 @@ const Header = ()=>{
                 <span>User Name</span>
             </div>
 
-            {/* </div> */}
+            </div>
             
         </header>
         </>
