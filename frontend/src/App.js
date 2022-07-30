@@ -11,12 +11,13 @@ function App() {
     
     <BrowserRouter>
     <Header/>
-    <SideBar/>
+    {/* <SideBar/> */}
     <Routes>
       
       <Route path="/create-order" element={<OrderBody/>}></Route>
       {/* <Route path="/" element={<SideBar/>}></Route> */}
     </Routes>
+    <SideBar/>
     <Footer/>
     </BrowserRouter>
     
