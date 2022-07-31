@@ -3,7 +3,6 @@ const app = express();
 const mongoose=require("mongoose")
 const cors=require("cors")
 const register=require("./routes/Register&Signin")
-
 require("dotenv").config()
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
@@ -27,3 +26,10 @@ mongoose.connect("mongodb+srv://Sakshi09:test123@instaclone.gwk4cly.mongodb.net/
 })
 
 app.use("/",register)
+app.listen(process.env.PORT || 3001, (err)=>{
+ if(err){
+    console.log(err)
+ } else {
+    console.log("Server connected succesfully")
+ }
+})
