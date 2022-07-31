@@ -3,7 +3,7 @@ import "./body.css";
 import {Link} from "react-router-dom";
 
 const Body = () =>{
-    return(
+     return(
         <>
         <div className="container">
         <p className="orderno">Order | 0</p>

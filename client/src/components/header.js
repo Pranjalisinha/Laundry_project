@@ -1,8 +1,20 @@
 import React from "react";
 import "./header.css";
 import Image from "../image/avtar.png";
+import {useState, useEffect} from "react"
+import axios from "axios";
 
 const Header = ()=>{
+  const [userData, setUserData] = useState([]);
+    useEffect(()=>{
+        axios.get("http://localhost:3001/Register").then((res)=>{
+            let data = res.data.reverse();
+            setUserData(data);
+            console.log(data);
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }, [])
   return(
     <>
     <header className="Head">

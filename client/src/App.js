@@ -3,6 +3,7 @@ import Body from "./components/body";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import Sidebar from "./components/sidebar";
+import OrderPage from "./components/order_page";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = ()=>{
@@ -12,6 +13,7 @@ const App = ()=>{
     <BrowserRouter>
     <Routes>
     <Route path="/" element={<Body/>}/>
+    <Route path="/viewOrder" element={<OrderPage/>}/>
     </Routes>
     </BrowserRouter>
     <Sidebar/>
