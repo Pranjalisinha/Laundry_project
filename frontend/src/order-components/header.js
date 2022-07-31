@@ -1,16 +1,12 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import "./header.css"
 const Header = ()=>{
     return(
         <>
         <header id="header">
             <div className="heading"><h2>LAUNDRY</h2></div>
-            
-            {/* <ul type="none" id="list">
-                <li className="price"> Pricing</li>
-                <li className="career" >Career</li>
-                <li className="userImg" ><img src="avtar.png" alt="userLogo"/></li>
-            </ul> */}
+          
             <div id="rigth-head">
             <div className="list1">
             <p className="pricing">Pricing</p>
@@ -19,10 +15,13 @@ const Header = ()=>{
             <div className="list2">
                 <p className="career">Career</p>
             </div>
-            <div className="list3">
-                <img id="Logo" src="icon.jpg" alt=""/>
-                <span>User Name</span>
-            </div>
+            <Link to="./logout.js"><div className="list3">
+                <img id="Logo" src="/images/icon.jpg" alt=""/>
+                {/* <span>User Name</span> */}
+                <div>
+                    <p>User Name</p>
+                </div>
+            </div></Link>
 
             </div>
             

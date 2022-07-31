@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./order-create.css"
 
 const OrderBody = ()=>{
-const Array = [
+const ProductArray = [
     {
       name: "Shirt",
       image: "shirt.jpg",
@@ -39,23 +40,23 @@ const Array = [
           <p className="orderno">Create Order</p>
     
           <div className="searchBox">
-              <img className='magnifine' src="search.png" />
+              <img className='magnifine' src="/images/search.png" />
               <input id="searchInput" type='text' />
           </div>
       </div>
     
       <div id="product">
           <div id="head-row">
-              <div className="item1">Product Type</div>
-              <div className="item2">Quantity</div>
-              <div className="item3">Wash Type</div>
-              <div className="item4">Price</div>
+              <div id="item1">Product Type</div>
+              <div id="item2">Quantity</div>
+              <div id="item3">Wash Type</div>
+              <div id="item4">Price</div>
           </div>
-          {Array.map(item => (<ItemRow info={item} key={item.name} />))}
+          {ProductArray.map(item => (<ItemRows info={item} key={item.name} />))}
           
           <div className="B-container">
               <button className="button">Cancel</button>
-              <button className="button">Proceed</button>
+              <Link to="./summary.js"><button className="button">Proceed</button></Link>
           </div>   
           
 
@@ -64,30 +65,36 @@ const Array = [
     </>
   )
 }
-const ItemRow = (props) => {
-    return (
-      <>
-        <div className='itemsRow'>
-          <div className="imageDiv">
-            <img className="itemImg" src={`/images/${props.info.image}`} />
-            <div>
-              <p style={{ "margin-left":"5px", "color":"#1D2022" }}><b>{ props.info.name }</b></p>
-            </div>
-          </div>
-          <div className="inputDiv">
-            <div className="input"><input className="quantityInput" type="number" style={{ border: "none" }} /></div>
-          </div>
-          <div className="washtype">
-            <img className="washtypeImage" src={"/images/washing-machine.png"} alt="" />
-            <img className="washtypeImage" src="/images/iron.png" alt="" />
-            <img className="washtypeImage" src="/images/towel.png" alt="" />
-            <img className="washtypeImage" src="/images/bleach.png" alt="" />
-          </div>
-          <div className="price">
-            <p>___</p>
-          </div>
+const ItemRows = (props) => {
+  return(
+    <>
+    <div id="item-row">
+      <div className="imageDivision">
+        <img  className="itemImg"  src={`/images/${props.info.image}`}/>
+        <div className="para">
+          <p><b>{props.info.name}</b></p>
+          <p style={{ "fontSize":"11px", "color":"#76788B", "margin-top":"-5px"}}>Lorem Ispum is simple</p>
+      </div>
+      </div>
+      
+      <div className="inputDivision">
+        <div className="inputNum">
+          <input className="quantityNum" type="number" style={{ border: "none" }} ></input>
         </div>
-      </>
-    );
-  }
+      </div>
+      <div className="washDivision">
+        <img className="washImg" src="/images/washing-machine.png"/>
+        <img className="washImg" src="/images/iron.png"/>
+        <img className="washImg" src="/images/towel.png"/>
+        <img className="washImg" src="/images/bleach.png"/>
+
+      </div>
+      <div className="price">
+        <p>___</p>
+      </div>
+    </div>
+    </>
+  )
+    
+}
  export default OrderBody;

@@ -48,6 +48,7 @@
     
 }
 .list3{
+    display: flex;
     padding-right: 30px;
     /* UI Properties */
     background: #5861AE 0% 0% no-repeat padding-box;
