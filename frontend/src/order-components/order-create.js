@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./order-create.css"
+import SummaryPg from "./summary";
 
 const OrderBody = ()=>{
+const [sumpop, setSumpopUp] =React.useState(false);
 const ProductArray = [
     {
       name: "Shirt",
@@ -57,11 +59,16 @@ const ProductArray = [
           <div className="B-container">
               <button className="button">Cancel</button>
               <Link to="./summary.js"><button className="button">Proceed</button></Link>
+              {/* <button className="button"
+              onClick={()=>{
+                handleProceed(); setSumpopUp(true)
+              }}>Proceed</button> */}
           </div>   
           
 
       </div>
     </div>
+    <SummaryPg trigger={sumpop} setTrigger={setSumpopUp}/>
     </>
   )
 }

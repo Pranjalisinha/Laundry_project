@@ -85,6 +85,7 @@
   padding: 0.5rem 1rem;
   border: 1px solid rgba(112, 112, 112, 0.2);
   border-top: none;
+  height: 65px;
 }
 .imageDivision{
   display: flex;

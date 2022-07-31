@@ -1,0 +1,23 @@
+#summaryBack{
+    background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+#orderDetail{
+  float: right;
+  background-color: #FFFFFF;
+  height: 100%;
+}
+.head{
+  background-color: rgb(123, 123, 235);
+  color: #FFFFFF;
+  display: flex;
+}
+.storeDetail{
+    display: flex;
+}
