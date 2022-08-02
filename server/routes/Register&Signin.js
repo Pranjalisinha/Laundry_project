@@ -7,7 +7,6 @@ const salt=10
 
 router.post("/Register",async(req,res)=>{
     //checking email is unique or not
-
     const Email= await Users.find({Email:req.body.Email})
     if(Email.length){
         res.status(400).send("EmailExist")
@@ -75,7 +74,7 @@ router.post("/Register",async(req,res)=>{
               }
           }
           else{
-            res.status(400).send(`Invalid ${USER}`)
+            res.status(400).send(`Invalid User`)
           }
     })
 
