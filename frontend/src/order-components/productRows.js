@@ -2,16 +2,17 @@ import React from 'react'
 import "./order-create.css"
 
 const ItemRows = (props) => {
+  // console.log(props)
   const [itemPriceDetail, setItemPriceDetail] =React.useState({
     itemPrice :0,
     PerItemPrice :0
   })
-  // const handleChange =(e)=>{
-  //   const {value} =(e.target);
-  //   props.setOrderDetails(prevDetail =>{
-  //     return {...prevDetail, [props.info.name]: {...prevDetail[props.info.name], quantity: value}}
-  //   })
-  // }
+  const handleChange =(e)=>{
+    const {value} =e.target;
+    props.setOrderDetails(prevDetail =>{
+      return {...prevDetail, [props.info.name]: {...prevDetail[props.info.name], quantity: value}}
+    })
+  }
   const handleImageClick=(e)=>{
     let index = Number(e.target.attributes.index.value)
     props.setOrderDetails(prevDetail =>{
@@ -36,20 +37,21 @@ const ItemRows = (props) => {
   function CalculateEachItemPrice(){
     let pricePerItem = 0, prices = 0;
     props.orderDetails[props.info.name].washType.map((val ,i)=>{
-      // prices += typePrice[props.info.name][i] * val * Number(props.orderDetails[props.info.name].quantity);
-      // pricePerItem += typePrice[props.info.name][i] * val;
-      console.log(typePrice[props.info.name][i])
-      console.log( Number(props.orderDetails[props.info.name].quantity),"Number")
-      console.log(val)
+      prices += typePrice[props.info.name][i] * val * Number(props.orderDetails[props.info.name].quantity);
+      pricePerItem += typePrice[props.info.name][i] * val;
+      // console.log(typePrice[props.info.name][i])
+      // console.log( Number(props.orderDetails[props.info.name].quantity),"Number")
+      // console.log(val)
     })
     return [pricePerItem , prices];
   }
-  React.useEffect(()=>{
-    let [itemPrice ,  PerItemPrice]= CalculateEachItemPrice();
-    setItemPriceDetail({
-      itemPrice :itemPrice,
-      PerItemPrice : PerItemPrice
-    })})
+
+  // React.useEffect(()=>{
+  //   let [itemPrice ,  PerItemPrice]= CalculateEachItemPrice();
+  //   setItemPriceDetail({
+  //     itemPrice :itemPrice,
+  //     PerItemPrice : PerItemPrice
+  //   })})
   //   props.setOrderDetails(prevDetail =>({...prevDetail,[props.info.name]: {...prevDetail[props.info.name], prices :itemPrice}}))
   // }, [...props.orderDetails[props.info.name].washType, props.orderDetails[props.info.name].quantity]);
 
@@ -79,7 +81,7 @@ const ItemRows = (props) => {
           name='quantity' 
           // value={props.orderDetails[props.info.name].quantity} 
           style={{ border: "none" }}  
-          // onChange={handleChange}
+           onChange={handleChange}
           ></input>
         </div>
       </div>

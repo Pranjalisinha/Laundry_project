@@ -87,12 +87,51 @@ const SummaryPg =({closeSumPg})=>{
             
             <div className="orderDetail">
                 <div><p><b>Order Detail</b></p></div>
-                <div>
                     {/* {orderDetail.map(item =>(<Totalorder  info={item} key={item.name} />))} */}
-                </div>
+                    
+                    <div className="o-d">
+                        <ul type="none" className="o_d">
+                            <li className="item_n">
+                                Shirt
+                            </li>
+                            <li className="item_t"><em>Washing, Ironing</em></li>
+                            <li className="item_p">
+                                5 X 20 = <p>100</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="o-d">
+                        <ul type="none" className="o_d">
+                            <li className="item_n">
+                                Jeans
+                            </li>
+                            <li className="item_t"><em>Washing, Ironing</em></li>
+                            <li className="item_p">
+                                5 X 30 = <p>150</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="o-d">
+                        <ul type="none" className="o_d">
+                            <li className="item_n">
+                                Joggers
+                            </li>
+                            <li className="item_t"><em>Chemical Wash</em></li>
+                            <li className="item_p">
+                                2 X 100 = <p>200</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="sub_t">
+                        <p>Sub Total : 450</p>
+                        <p className="pick">Pickup Charges : 90</p>
+                    </div>
+                    <div className="total">
+                        <p>Total:     Rs 560</p>
+                    </div>
 
             </div>
-            <hr></hr>
+            
             <div className="userAdd">
                 <p><b>Address</b></p>
                 <div className="A-container">
@@ -100,9 +139,10 @@ const SummaryPg =({closeSumPg})=>{
                         <p><b>Home</b></p>
                         <div><img src="/images/tick.svg"></img></div>
                     </div>
-                    <p>{orderFinalDetail.storeInfo !=="" ?
+                    {/* <p>{orderFinalDetail.storeInfo !=="" ?
                         JSON.parse(orderFinalDetail.storeInfo).address :""
-                    }</p>
+                    }</p> */}
+                    <p style={{"margin-top": "-10px"}}>#123 10th Road ,<br></br>by pass,Banglore</p>
                 </div>
                 
             </div>

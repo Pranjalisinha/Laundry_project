@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./order-create.css"
 import SummaryPg from "./summary";
 // import ConfirmationPop from "./confirmation";
-import ItemRows from "./itemRows";
+import ItemRows from "./productRows";
 const OrderBody = ()=>{
 const [sumpop, setSumpopUp] = useState(false);
 // const [trigger, setTrigger] =useState(false);
@@ -57,21 +57,24 @@ const [modifyOrderDetail , setModifyOrderDetail] =React.useState([]);
 //   }
 // }
 
-// React.useEffect(()=>{
-//   setModifyOrderDetail([]);
-//   Object.keys(orderDetails).forEach(key => {
-//     let obj ={};
-//     if(orderDetails[key].price !=0){
-//       obj.name =key;
-//       obj.price = orderDetails[key].price;
-//       obj.quantity = orderDetails[key].quantity;
-//       obj.washType = orderDetails[key].washType;
-//       setModifyOrderDetail(prevDetail =>([...prevDetail, obj]))
+React.useEffect(()=>{
+  //console.log(orderDetails)
+  //console.log(modifyOrderDetail);
+  setModifyOrderDetail([]);
+  Object.keys(orderDetails).forEach(key => {
+    console.log(modifyOrderDetail);
+    let obj ={};
+    if(orderDetails[key].price !=0){
+      obj.name =key;
+      obj.price = orderDetails[key].price;
+      obj.quantity = orderDetails[key].quantity;
+      obj.washType = orderDetails[key].washType;
+      setModifyOrderDetail(prevDetail =>([...prevDetail, obj]))
+      //console.log(modifyOrderDetail);
+    }
 
-//     }
-
-//   })
-// },[orderDetails])
+  })
+},[orderDetails])
   return(
     <>
     <div id="orderPg">
@@ -96,8 +99,8 @@ const [modifyOrderDetail , setModifyOrderDetail] =React.useState([]);
             key={item.name} 
             setOrderDetails={setOrderDetails}
             orderDetails={orderDetails}
-            // setModifyOrderDetail={setModifyOrderDetail}
-            // modifyOrderDetail={modifyOrderDetail}
+            setModifyOrderDetail={setModifyOrderDetail}
+            modifyOrderDetail={modifyOrderDetail}
            />))}
           
           <div className="B-container">
