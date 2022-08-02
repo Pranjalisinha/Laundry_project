@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom"
-import "./header.css"
+//import {Link} from "react-router-dom"
+import "./headerP2.css"
 const Header = ()=>{
     return(
         <>
@@ -43,7 +43,7 @@ const Header = ()=>{
                         </div>
                 </button>
                 <div className="dropdown-content">
-                <a href="#">LOG OUT</a>
+                <a href="/Signin">LOG OUT</a>
                 
             </div>
             </div>

@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import "./order-create.css"
-import SummaryPg from "./summary";
+import SummaryPg from "./summaryPg";
 // import ConfirmationPop from "./confirmation";
 import ItemRows from "./productRows";
 const OrderBody = ()=>{

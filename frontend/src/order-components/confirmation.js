@@ -1,5 +1,6 @@
 import React from 'react'
 import "./confirmation.css"
+import {Link} from "react-router-dom"
 function ConfirmationPop({orderDone}) {
   return (
     <>
@@ -9,7 +10,7 @@ function ConfirmationPop({orderDone}) {
       <img src='/images/tick.svg' className='tickImg'></img>
         <p className='cardPara' ><b>Your Order Placed <br/> Sucessfully</b></p>
         <p className='cardPara' id="para2">You can track the delivery in the "Order" Section</p>
-        <button id="goToOrderButton" onClick={()=> orderDone(false)}>Go to orders</button>
+        <Link to="/viewOrder"><button id="goToOrderButton" onClick={()=> orderDone(false)}>Go to orders</button></Link>
       </div>
         
     </div>

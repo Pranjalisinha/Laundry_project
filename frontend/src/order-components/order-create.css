@@ -4,7 +4,7 @@
 .container{
     top: 119px;
     left: 100px;
-    width: 1270px;
+    width: 1370px;
     height: 5px;
     margin-top: 25px;
     float: right;
@@ -40,7 +40,7 @@
 #product{
     top: 177px;
     left: 108px;
-    width: 1230px;
+    width: 1330px;
     height: 530px;
     /* UI Properties */
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -56,7 +56,8 @@
     background-color: #2F2F2F;
     color: #FFFFFF;
     display: flex;
-    height: 40px;
+    height: 60px;
+    
     
 }
 .B-container {
@@ -85,7 +86,7 @@
   padding: 0.5rem 1rem;
   border: 1px solid rgba(112, 112, 112, 0.2);
   border-top: none;
-  height: 50px;
+  height: 80px;
 }
 .imageDivision{
   display: flex;
