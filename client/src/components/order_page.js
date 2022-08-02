@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SummaryPage from "./summary";
 
-
 const OrderPage = ()=>{
     const [summary, setSummary] = useState(false);
     const [orderData, setOrderData] = useState([]);

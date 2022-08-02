@@ -12,7 +12,7 @@ const App = ()=>{
     <Header/>
     <BrowserRouter>
     <Routes>
-    <Route path="/" element={<Body/>}/>
+    <Route path="/create" element={<Body/>}/>
     <Route path="/viewOrder" element={<OrderPage/>}/>
     </Routes>
     </BrowserRouter>

@@ -13,7 +13,7 @@ const Alert =({closeAlert})=>{
         </div>
         <div className="cmain">
           <img src={Image} alt="Danger" height={70} width={70} className="danger"/>
-          <p>Are you Sure you want to cancle the order No</p>
+          <p>Are you Sure you want to cancle the order No 0R00001</p>
         </div>
         <button className="proceed">Proceed</button>
       </div>
