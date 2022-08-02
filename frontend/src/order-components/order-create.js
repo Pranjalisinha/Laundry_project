@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import "./order-create.css"
 import SummaryPg from "./summary";
-
+// import ConfirmationPop from "./confirmation";
+import ItemRows from "./itemRows";
 const OrderBody = ()=>{
-const [sumpop, setSumpopUp] =React.useState(false);
+const [sumpop, setSumpopUp] = useState(false);
+// const [trigger, setTrigger] =useState(false);
 const ProductArray = [
     {
       name: "Shirt",
@@ -35,6 +37,41 @@ const ProductArray = [
       image: "others.jpg",
   },
 ];
+const initialState ={};
+for(let i=0; i< ProductArray.length;i++){
+  let name =ProductArray[i].name;
+  initialState[name]={
+    quantity :"",
+    washType :[false, false, false, false],
+    price :0,
+  };
+}
+const [orderDetails ,setOrderDetails] = React.useState(initialState);
+const [modifyOrderDetail , setModifyOrderDetail] =React.useState([]);
+
+// const handleProceed=()=>{
+//   if(modifyOrderDetail.length !==0){
+//     setSumpopUp(prevState =>({...prevState, sumpop:true}))
+//   }else{
+//     alert("Please Select some items")
+//   }
+// }
+
+// React.useEffect(()=>{
+//   setModifyOrderDetail([]);
+//   Object.keys(orderDetails).forEach(key => {
+//     let obj ={};
+//     if(orderDetails[key].price !=0){
+//       obj.name =key;
+//       obj.price = orderDetails[key].price;
+//       obj.quantity = orderDetails[key].quantity;
+//       obj.washType = orderDetails[key].washType;
+//       setModifyOrderDetail(prevDetail =>([...prevDetail, obj]))
+
+//     }
+
+//   })
+// },[orderDetails])
   return(
     <>
     <div id="orderPg">
@@ -54,54 +91,29 @@ const ProductArray = [
               <div id="item3">Wash Type</div>
               <div id="item4">Price</div>
           </div>
-          {ProductArray.map(item => (<ItemRows info={item} key={item.name} />))}
+          {ProductArray.map(item => (<ItemRows 
+            info={item}
+            key={item.name} 
+            setOrderDetails={setOrderDetails}
+            orderDetails={orderDetails}
+            // setModifyOrderDetail={setModifyOrderDetail}
+            // modifyOrderDetail={modifyOrderDetail}
+           />))}
           
           <div className="B-container">
               <button className="button">Cancel</button>
-              <Link to="./summary.js"><button className="button">Proceed</button></Link>
-              {/* <button className="button"
-              onClick={()=>{
-                handleProceed(); setSumpopUp(true)
-              }}>Proceed</button> */}
+              {/* <button className="button"onClick={() => handleProceed()}>Proceed</button> */}
+              <button className="button"onClick={()=>{setSumpopUp(true)}}>Proceed</button>
           </div>   
           
 
       </div>
     </div>
-    <SummaryPg trigger={sumpop} setTrigger={setSumpopUp}/>
+    {/* <SummaryPg trigger={sumpop} setTrigger={setSumpopUp}/> */}
+    {sumpop && <SummaryPg closeSumPg={setSumpopUp}/>}
+    {/* {trigger && <ConfirmationPop orderDone={setTrigger}/>} */}
     </>
   )
 }
-const ItemRows = (props) => {
-  return(
-    <>
-    <div id="item-row">
-      <div className="imageDivision">
-        <img  className="itemImg"  src={`/images/${props.info.image}`}/>
-        <div className="para">
-          <p><b>{props.info.name}</b></p>
-          <p style={{ "fontSize":"11px", "color":"#76788B", "margin-top":"-5px"}}>Lorem Ispum is simple</p>
-      </div>
-      </div>
-      
-      <div className="inputDivision">
-        <div className="inputNum">
-          <input className="quantityNum" type="number" style={{ border: "none" }} ></input>
-        </div>
-      </div>
-      <div className="washDivision">
-        <img className="washImg" src="/images/washing-machine.png"/>
-        <img className="washImg" src="/images/iron.png"/>
-        <img className="washImg" src="/images/towel.png"/>
-        <img className="washImg" src="/images/bleach.png"/>
 
-      </div>
-      <div className="price">
-        <p>___</p>
-      </div>
-    </div>
-    </>
-  )
-    
-}
  export default OrderBody;

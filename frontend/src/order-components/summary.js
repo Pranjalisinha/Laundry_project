@@ -1,79 +1,144 @@
 import React, {useState} from "react";
-import Select from 'react-select';
+//import axios from 'axios';
+import ConfirmationPop from "./confirmation";
 import './summary.css';
 
 
-// const actions =[
-//     { value: 'jp nagar', label: 'Jp Nagar' },
-//     { value: 'alkapuri', label: 'Alkapuri' },
-//     { value: 'pink city', label: 'Pink City' }
-// ]
-const actions =[
-    {
-        lable :"Jp Nagar",
-        storeAddress :"Near phone booth,10th Road",
-        phone:"+91 009911563328"
-    },
-    {
-        lable :"Alkapuri",
-        storeAddress :"Near J-D Hall,11th striet",
-        phone:"+91 900916743326"
-    },
-    {
-        lable :"Pink City",
-        storeAddress :"Near phone booth,10th Road",
-        phone:"+91 8009115633280"
-    }
-]
 
-const SummaryPg =()=>{
-    const [inputVal , setVal]= useState('');
-    const [selectedVal, setSelectedVal] = useState(null);
-
-    const handleInputChange = value =>{
-        setVal(value);
+const SummaryPg =({closeSumPg})=>{
+    // const orderDetail = props.orderDetail;
+    const [trigger, setTrigger] =useState(false);
+    const [orderFinalDetail , setOrderFinaldetail] =React.useState({
+        dateTime : "",
+        storeInfo : "",
+        userAddress : "",
+        status : "",
+        items : "",
+    })
+    
+    if(trigger){
+        return <ConfirmationPop orderDone={setTrigger}/>
+    }
+    // const [tryW, setTry]= useState(false);
+    // var sumTotal =0;
+    // for(let i=0; i< orderDetail.length;i++){
+    //     sumTotal += orderDetail[i].price * orderDetail[i].quantity
+    // }
+    const actions =[
+        {
+            name :"Jp Nagar",
+            address :"Phone booth,10th Road",
+            phone:"+91 9753855624"
+        },
+        {
+            name :"Alkapuri",
+            address :"Near J-D Hall,11th strit",
+            phone:"+91 8733209221"
+        },
+        {
+            name :"Pink City",
+            address :"Sindhari ,By pass",
+            phone:"+91 5399511300"
+        }
+    ]
+    const handleChange =(e) =>{
+        setOrderFinaldetail(prevDetail =>({...prevDetail, storeInfo: e.target.value}))
+    }
+    const handleButton =()=>{
+        //closeSumPg(false)
+        setTrigger("true");
+        console.log(trigger);
     }
 
-    const handleChange = value =>{
-        setSelectedVal(value);
-        console.log(value);
-    }
     return(
         <>
         <div id="summaryBack">
-        <div id="orderDetail">
+        <div id="popContainer">
             <div className="head">
-                <p>Summary</p>
-                <span class="close">&times;</span>
+                <p className="summaryHead"><b>Summary</b></p>
+                
+                <button onClick={()=> closeSumPg(false)} className="close-B"><b>X</b></button>
             </div>
             <div className="storeDetail">
                 <div className="location">
-                    <p><b>Store Location</b></p>
-                    <Select style={{boder:"none", width:"15%"}} options={actions}  value={selectedVal} onInputChange={handleInputChange} onChange={handleChange}/> 
+                     <p><b>Store Location</b></p>
+                     <select name="address" onChange={handleChange} id="address">
+                        <option value="none" selected disabled hidden  className="disabled">Store Location</option>
+                        {actions.map(store =>(<option value={JSON.stringify(store)} key={store.name}>{store.name}</option>))}
+                     </select>
                 
-                    {/* <input style={{boder:"none"}} type="select" options={actions}></input>
-                    <select style={{boder: "0px"}}>
-                        <option>a</option>
-                        <option>b</option>
-                    </select> */}
+                    
                 </div>
-                <div className="address">
-                    <p><b>Store Address</b></p>
-                    <p>hello{JSON.stringify(setSelectedVal || {}, null, 2)}</p>
+                <div className="storeAddress">
+                    <p className="storeDetail"><b>Store Address</b></p>
+                    <p className="storeDetail">{
+                        orderFinalDetail.storeInfo !=="" ?
+                        JSON.parse(orderFinalDetail.storeInfo).address :"__"
+                    }</p>
                 </div>
                 <div className="phone">
-                    <p><b>PhoneNo.</b></p>
-                    <p>8766</p>
+                    <p className="storeDetail"><b>PhoneNo.</b></p>
+                    <p className="storeDetail">{
+                        orderFinalDetail.storeInfo !=="" ?
+                        JSON.parse(orderFinalDetail.storeInfo).phone :"__"
+                    }</p>
                 </div>
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
+            
+            <div className="orderDetail">
+                <div><p><b>Order Detail</b></p></div>
+                <div>
+                    {/* {orderDetail.map(item =>(<Totalorder  info={item} key={item.name} />))} */}
+                </div>
+
+            </div>
+            <hr></hr>
+            <div className="userAdd">
+                <p><b>Address</b></p>
+                <div className="A-container">
+                    <div className="add">
+                        <p><b>Home</b></p>
+                        <div><img src="/images/tick.svg"></img></div>
+                    </div>
+                    <p>{orderFinalDetail.storeInfo !=="" ?
+                        JSON.parse(orderFinalDetail.storeInfo).address :""
+                    }</p>
+                </div>
+                
+            </div>
+            <div className="B-div">
+                {/* <button className="confirm-B" onClick={()=>{setTrigger(true)}}><div onClick={()=> closeSumPg(false)}>Confirm</div></button> */}
+                    <button className="confirm-B" onClick={handleButton} > Confirm </button>
+            </div>
         </div>
         </div>
+        {/* <p>{trigger}</p> */}
+        {/* {true && <p>working test</p>} */}
+        {/* {trigger && <ConfirmationPop orderDone={setTrigger}/>} */}
         
         </>
     )
 }
+// const Totalorder =(props) =>{
+//     const washType =["washing", "ironing","dry-wash","bleach"];
+//     const typePrice ={
+//         Shirts :[10, 10, 15, 20],
+//         TShirts : [10, 10, 15, 20],
+//         Trousers : [15, 15, 20, 25],
+//         Jeans : [20, 20, 25, 30],
+//         Boxers : [15, 15, 20, 25],
+//         Joggers : [20, 20, 25, 30],
+//         Others : [25, 25, 30, 30],
+//     }
+//     return(
+//         <>
+//         <div id="product-cart">
+//             <div className="productType">{props.info.name}</div>
+//             <div className="washType">washing,ironing{washType}</div>
+//             <div className="priceType">275{typePrice}</div>
+//         </div>
+//         </>
+//     )
+// }
 
 export default SummaryPg;

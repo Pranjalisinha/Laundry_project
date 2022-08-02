@@ -15,13 +15,38 @@ const Header = ()=>{
             <div className="list2">
                 <p className="career">Career</p>
             </div>
-            <Link to="./logout.js"><div className="list3">
+            {/* <Link to="./logout.js"><div className="list3">
                 <img id="Logo" src="/images/icon.jpg" alt=""/>
-                {/* <span>User Name</span> */}
                 <div>
                     <p>User Name</p>
                 </div>
-            </div></Link>
+            </div></Link> */}
+            {/* <button className="userButton">
+                <div className="list3">
+                    <img id="Logo" src="/images/icon.jpg" alt=""/>
+                    <div>
+                        <p>User Name</p>
+                    </div>
+                </div>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">LOG OUT</a>
+                
+            </div> */}
+            <div className="dropdown">
+                {/* <button className="dropbtn">Dropdown</button> */}
+                <button className="dropbtn">
+                        <div className="Imgcontain">
+                        <span><img id="Logo" src="/images/icon.jpg" alt=""/></span>
+                        
+                        <span> User Name</span>
+                        </div>
+                </button>
+                <div className="dropdown-content">
+                <a href="#">LOG OUT</a>
+                
+            </div>
+            </div>
 
             </div>
             

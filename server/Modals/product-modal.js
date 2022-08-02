@@ -5,19 +5,19 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    order_id:{
+    orderId:{
         type: String,
         required: true,
     },
-    date_time:{
+    dateTime:{
         type: String,
         required: true,
     },
-    store_Info:{
+    storeInfo:{
         type: String,
         required: true,
     },
-    user_Address: {
+    userAddress: {
         type: String,
         required: true
     },
@@ -28,6 +28,10 @@ const productSchema = new mongoose.Schema({
     items:{
         type : String,
         required: true,
+    },
+    price:{
+        type: Number,
+        required: true
     }
 
 })
