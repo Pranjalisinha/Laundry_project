@@ -1,7 +1,7 @@
 .order{
     top: 119px;
     left: 106px;
-    width: 1270px;
+    width: 1360px;
     height: 900px;
     margin-top: 30px;
     float: right;
@@ -43,7 +43,8 @@
     border-bottom: 2px solid rgb(184, 182, 182);
 }
 .order_table{
-    border: 1px solid black;
+    width: 1340px;
+    border: none;
     background-color: black;
     color: #FFFFFF;
     text-align: left;
@@ -56,4 +57,29 @@
 }
 .order_table tr th{
     padding: 3px 10px;
+}
+.order_data{
+    display: flex;
+    border: 1px solid rgb(192, 191, 191);
+    width:1340px;
+    margin-left: 20px;
+}
+.order_p{
+    margin-left: 10px;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font: normal normal 600 16px/22px Open ;
+    font-family: sans-serif;
+    letter-spacing: 0.3px;
+    color: #1B2734;
+    opacity: 1;
+}
+.c_o{
+    margin: 0px 10px;
+    width: 120px;
+}
+.btn1{ 
+    background-color: #FFFFFF;
+    border: none;
 }

@@ -1,0 +1,52 @@
+{
+    "order":
+                [
+            {"user_name":"Siva",
+            "order_id":"0R00001",
+            "date_time": "31 July 2022 8:23",
+            "store_location": "Jp nagar",
+            "city": "Bangalore",
+            "phone_no": "+91 9988667755",
+            "Total_price": 400,
+            "price": 350,
+            "status": "In Washing",
+            "store_Address": "Near Phone booth, 10th road,",
+            "store_phone": "91 9999999999",
+            "order_details":[
+                {
+                    "productType": "Shirts",
+                    "WashType": [
+                        1,
+                        0,
+                        1,
+                        0
+                    ],
+                    "quantity": "5 x20 = 100"
+                },
+                {
+                    "productType": "Shirts",
+                    "WashType": [
+                        0,
+                        0,
+                        1,
+                        0
+                    ],
+                    "quantity": "5 x30 = 150"
+                },
+                {
+                    "productType": "Shirts",
+                    "WashType": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "quantity": "2 x100 = 200"
+                }
+            ],
+            "subTotal": 450,
+            "pickupCharges": 90,
+            "TotalAmount": 590,
+            "userAddress": "Street:  5/6 Balkrishna Niwas, 2nd Panjarapole Street, Mumbai, Maharashtra 02222423469 400004"
+}]
+}

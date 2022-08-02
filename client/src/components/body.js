@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const Body = () =>{
      return(
         <>
-        <div className="container">
+        <div className="content">
         <p className="orderno">Order | 0</p>
         <div className="c1">
         <input type="search" className="search"/>

@@ -2,70 +2,97 @@ import React from "react";
 import "./order_page.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import SummaryPage from "./summary";
+
 
 const OrderPage = ()=>{
+    const [summary, setSummary] = useState(false);
     const [orderData, setOrderData] = useState([]);
-    useEffect(()=>{
-        axios.get("http://localhost:3001/create-order").then((res)=>{
-            let data = res.data.reverse();
-            setOrderData(data);
-            console.log(data);
-        }).catch((err)=>{
-            console.log(err)
-        })
+    useEffect(() => {
+        fetch('http://localhost:3004/order')
+            .then(data => data.json())
+            .then((data) => setOrderData(data))
     }, [])
     return (
         <>
         <div className="order">
-        <p className="orderv">Order | 0</p>
+        <p className="orderv">Order | {orderData.length}</p>
         <div className="class">
         <Link to="/create-order"><button className="create">Create</button></Link>
         <input type="search1" className="search"/>
         </div>
-        <table className="order_table">
+        <table className="order_table" style={{border: "none"}}>
             <tr>
                 <th style={{width:"90px"}}>
                     Order Id
                 </th>
-                <th style={{width:"160px"}}>
+                <th style={{width:"150px"}}>
                     Order Date & Time
                 </th>
-                <th style={{width:"150px"}}>
+                <th style={{width:"140px"}}>
                     Store Location
                 </th>
-                <th style={{width:"120px"}}>
+                <th style={{width:"100px"}}>
                     City
                 </th>
-                <th style={{width:"150px"}}>
+                <th style={{width:"100px"}}>
                     Store Phone
                 </th>
-                <th style={{width:"120px"}}>
+                <th style={{width:"90px"}}>
                     Total Price
                 </th>
                 <th style={{width:"90px"}}>
                     Price
                 </th>
-                <th style={{width:"150px"}}>
+                <th style={{width:"140px"}}>
                     Status
                 </th>
-                <th style={{width:"70px"}}>
+                <th style={{width:"60px"}}>
                     View
                 </th>
             </tr>
-            <tr>
-            {orderData.map((data, index) => {
+            </table>
+            <div>
+            {orderData.map((data, index)=>{
                 return(
-                    <>
-                    <td>
-                        {data.order_id}
-                    </td>
-                    </>
+                    <div key={index} className="order_data">
+                    <div className="order_p" style={{width: "110px"}}>
+                    {data.order_id}
+                    </div>
+                    <div className="order_p" style={{width: "180px"}}>
+                    {data.date_time}
+                    </div>
+                    <div className="order_p" style={{width: "150px"}}>
+                    {data.store_location}
+                    </div>
+                    <div className="order_p" style={{width: "120px"}}>
+                    {data.city}
+                    </div>
+                    <div className="order_p" style={{width: "180px"}}>
+                    {data.phone_no}
+                    </div>
+                    <div className="order_p" style={{width: "100px"}}>
+                    {data.Total_price}
+                    </div>
+                    <div className="order_p" style={{width: "90px"}}>
+                    {data.price}
+                    </div>
+                    <div className="order_p" style={{width: "120"}}>
+                    {data.status}
+                    { data.status === "Ready to pickup" ? <div style={{color: "red"}} className="c_o">Cancle Order</div> : <div style={{color: "white"}} className="c_o"></div>}
+                    </div>
+                    <button Cancle Order
+                  className="btn1" 
+                  onClick={() => setSummary(true)}><span class="material-symbols-outlined">
+visibility
+</span></button>
+                    </div>
                 )
-                })}
-            </tr>
-        </table>
+            })}
+                  
+                </div>
         </div>
+        { summary && <SummaryPage closeSum={setSummary}/>}
         </>
     )
 

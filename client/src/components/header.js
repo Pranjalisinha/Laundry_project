@@ -2,19 +2,21 @@ import React from "react";
 import "./header.css";
 import Image from "../image/avtar.png";
 import {useState, useEffect} from "react"
-import axios from "axios";
 
 const Header = ()=>{
-  const [userData, setUserData] = useState([]);
+  const [userName, setUserName] = useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:3001/Register").then((res)=>{
-            let data = res.data.reverse();
-            setUserData(data);
-            console.log(data);
-        }).catch((err)=>{
-            console.log(err)
-        })
+        const name = JSON.parse(localStorage.getItem('userName'));
+        if(name){
+          setUserName(userName);
+        }
     }, [])
+  // const [userName, setUserData] = useState([]);
+  //   useEffect(() => {
+  //       fetch('http://localhost:3004/order')
+  //           .then(data => data.json())
+  //           .then((data) => setUserData(data))
+  //   }, [])
   return(
     <>
     <header className="Head">
