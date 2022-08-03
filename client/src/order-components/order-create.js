@@ -1,9 +1,12 @@
-import React, {useState,useEffect} from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+// import { Link } from "react-router-dom";
 import "./order-create.css"
 import SummaryPg from "./summaryPg";
-// import ConfirmationPop from "./confirmation";
 import ItemRows from "./productRows";
+import HeaderP2 from "./headerP2";
+import SideBar from "./sidebar"
+// import Footer from "./footerP2";
+
 const OrderBody = ()=>{
 const [sumpop, setSumpopUp] = useState(false);
 // const [trigger, setTrigger] =useState(false);
@@ -64,7 +67,7 @@ React.useEffect(()=>{
   Object.keys(orderDetails).forEach(key => {
     console.log(modifyOrderDetail);
     let obj ={};
-    if(orderDetails[key].price !=0){
+    if(orderDetails[key].price !==0){
       obj.name =key;
       obj.price = orderDetails[key].price;
       obj.quantity = orderDetails[key].quantity;
@@ -77,12 +80,13 @@ React.useEffect(()=>{
 },[orderDetails])
   return(
     <>
+    <HeaderP2/>
     <div id="orderPg">
       <div className="container">
           <p className="orderno">Create Order</p>
     
           <div className="searchBox">
-              <img className='magnifine' src="/images/search.png" />
+              <img className='magnifine' src="/images/search.png" alt=""/>
               <input id="searchInput" type='text' />
           </div>
       </div>
@@ -112,9 +116,11 @@ React.useEffect(()=>{
 
       </div>
     </div>
-    {/* <SummaryPg trigger={sumpop} setTrigger={setSumpopUp}/> */}
+   
     {sumpop && <SummaryPg closeSumPg={setSumpopUp}/>}
-    {/* {trigger && <ConfirmationPop orderDone={setTrigger}/>} */}
+     <SideBar/>
+        {/* <Footer/> */}
+   
     </>
   )
 }

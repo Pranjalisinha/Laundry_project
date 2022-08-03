@@ -1,7 +1,7 @@
 import React from "react";
 //import {Link} from "react-router-dom"
 import "./headerP2.css"
-const Header = ()=>{
+const HeaderP2 = ()=>{
     return(
         <>
         <header id="header">
@@ -54,4 +54,4 @@ const Header = ()=>{
         </>
     )
 }
-export default Header;
+export default HeaderP2;
