@@ -3,6 +3,7 @@ const app = express();
 const mongoose=require("mongoose")
 const cors=require("cors")
 const register=require("./routes/Register&Signin")
+
 require("dotenv").config()
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
@@ -15,9 +16,10 @@ app.listen(process.env.PORT || 3001, (err)=>{
    ;
 })
 //"mongodb+srv://Sakshi09:test123@instaclone.gwk4cly.mongodb.net/instaclone?retryWrites=true&w=majority"
+//"mongodb+srv://Ashindeedu:ashin123@ashinmk.rxye7.mongodb.net/Laundry?retryWrites=true&w=majority"
 //"mongodb://localhost/Laundry"
 
-mongoose.connect("mongodb+srv://Sakshi09:test123@instaclone.gwk4cly.mongodb.net/laundry?retryWrites=true&w=majority",(err)=>{
+mongoose.connect("mongodb://localhost/Laundry",(err)=>{
     if(err){
         console.log("err")
     }else{
@@ -26,10 +28,3 @@ mongoose.connect("mongodb+srv://Sakshi09:test123@instaclone.gwk4cly.mongodb.net/
 })
 
 app.use("/",register)
-app.listen(process.env.PORT || 3001, (err)=>{
- if(err){
-    console.log(err)
- } else {
-    console.log("Server connected succesfully")
- }
-})
