@@ -4,10 +4,8 @@ const router=express.Router()
 const jwt=require("jsonwebtoken")
 const Users=require('../Modals/Register-schema')
 const salt=10
-
 router.post("/Register",async(req,res)=>{
     //checking email is unique or not
-
     const Email= await Users.find({Email:req.body.Email})
     if(Email.length){
         res.status(400).send("EmailExist")
@@ -68,16 +66,16 @@ router.post("/Register",async(req,res)=>{
              if(data){
               //generating token
                  const Authtoken=jwt.sign(signindata[0].Email,process.env.SECRET_KEY)
-                 res.status(200).send({Authtoken})
+                 const username=signindata[0].Name
+                 res.status(200).send({Authtoken:Authtoken,username:username})
               }
               else{
                  res.status(400).send("Invalid password")
               }
           }
           else{
-            res.status(400).send(`Invalid ${USER}`)
+            res.status(400).send(`Invalid User`)
           }
     })
-
     module.exports=router
 

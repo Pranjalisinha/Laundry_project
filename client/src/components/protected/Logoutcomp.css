@@ -1,0 +1,17 @@
+.logoutComp{
+    position: absolute;
+    box-shadow: burlywood ;
+    top:200px;
+    left:600px;
+    height: 300px;
+    width: 200px;
+    border: none;
+    background-color: rgb(219, 223, 225);
+}
+.logoutComp button{
+    height: 30px;
+    width: 70px;
+    text-align: center;
+   margin-top: 120px;
+    
+}
